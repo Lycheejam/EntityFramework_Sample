@@ -67,7 +67,14 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Data\DivisionData.txt" />
+    <Content Include="Data\FlotillaData.txt" />
+    <Content Include="Data\HullCodeData.txt" />
+    <Content Include="Data\ListData.txt" />
+    <Content Include="Data\ShipClassData.txt" />
+    <Content Include="Data\ShipData.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
