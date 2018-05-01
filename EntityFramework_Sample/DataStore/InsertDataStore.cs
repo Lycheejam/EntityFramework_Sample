@@ -5,6 +5,9 @@ using System.Linq;
 
 namespace EntityFramework_Sample.DataStore {
     class InsertDataStore {
+        /// <summary>
+        /// 護衛隊群データをインサート（登録）
+        /// </summary>
         public void InsertFlotillaData() {
             using (var db = new ShipsDbContext()) {
                 var f1 = new EscortFlotilla {
@@ -35,7 +38,9 @@ namespace EntityFramework_Sample.DataStore {
                 db.SaveChanges();
             }
         }
-
+        /// <summary>
+        /// 護衛隊データをインサート（登録）
+        /// </summary>
         public void InsertDivisionData() {
             using (var db = new ShipsDbContext()) {
                 using (var sr = new StreamReader(@"..\..\Data\DivisionData.txt")) {
@@ -57,7 +62,10 @@ namespace EntityFramework_Sample.DataStore {
                 }
             }
         }
-        //艦種コードのインサート
+        /// <summary>
+        /// 艦種コードをインサート
+        /// ex.DD,DE,DDG,DDH
+        /// </summary>
         public void InsertHullCode() {
             using (var db = new ShipsDbContext()) {
                 using (var sr = new StreamReader(@"..\..\Data\HullCodeData.txt")) {
@@ -74,7 +82,10 @@ namespace EntityFramework_Sample.DataStore {
                 }
             }
         }
-        //艦型のインサート
+        /// <summary>
+        /// 艦種型データのインサート（登録）
+        /// ex.こんごう型,いずも型,ひゅうが型
+        /// </summary>
         public void InsertShipClass() {
             using (var db = new ShipsDbContext()) {
                 using (var sr = new StreamReader(@"..\..\Data\ShipClassData.txt")) {
@@ -91,7 +102,9 @@ namespace EntityFramework_Sample.DataStore {
                 }
             }
         }
-        //艦情報のインサート
+        /// <summary>
+        /// 艦船情報のインサート（登録）
+        /// </summary>
         public void InsertShipData() {
             using (var db = new ShipsDbContext()) {
                 using (var sr = new StreamReader(@"..\..\Data\ShipData.txt")) {
@@ -100,11 +113,13 @@ namespace EntityFramework_Sample.DataStore {
 
                     for (int i = 0; i < tmp.Length; i++) {
                         var sdstmp = tmp[i].Split(new string[] { "\t" }, StringSplitOptions.None);
-                        //LINQ to Entitiesでは配列をラムダ式に適用できないので変数に入れる
-                        var dname = sdstmp[0];
-                        var hullcode = sdstmp[1];
-                        var scname = sdstmp[4];
-                        var dt = new DateTime(Int32.Parse(sdstmp[7]), 1, 1);
+                        /*
+                         * LINQ to Entitiesでは配列をラムダ式に適用できないので変数に入れる
+                         */
+                        var dname = sdstmp[0];  //所属護衛隊名
+                        var hullcode = sdstmp[1];   //艦種コード
+                        var scname = sdstmp[4]; //艦型
+                        var dt = new DateTime(Int32.Parse(sdstmp[7]), 1, 1);    //就役年
 
                         var sds = new SelfDefenseShip {
                             EscortDivision = db.EscortDivisions.Single(x =>

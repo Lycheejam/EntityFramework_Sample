@@ -55,6 +55,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataStore\InsertDataStore.cs" />
+    <Compile Include="DataStore\ReadDataStore.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\EscortDivision.cs" />
     <Compile Include="Models\EscortFlotilla.cs" />
