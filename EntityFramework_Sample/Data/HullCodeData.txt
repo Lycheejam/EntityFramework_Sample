@@ -1,4 +1,4 @@
-﻿1	DD
-2	DE
-3	DDH
-4	DDG
+﻿DD
+DE
+DDH
+DDG

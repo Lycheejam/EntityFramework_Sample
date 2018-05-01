@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStore\InsertDataStore.cs" />
     <Compile Include="Models\Configuration.cs" />
     <Compile Include="Models\EscortDivision.cs" />
     <Compile Include="Models\EscortFlotilla.cs" />
