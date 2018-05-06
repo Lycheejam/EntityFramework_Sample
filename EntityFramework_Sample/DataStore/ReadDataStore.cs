@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Data.Entity;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace EntityFramework_Sample.DataStore {
     class ReadDataStore {
@@ -22,8 +23,10 @@ namespace EntityFramework_Sample.DataStore {
         }
         public ICollection<EscortDivision> ReadDivisionAllData() {
             using (var db = new ShipsDbContext()) {
+                db.Database.Log = sql => { Debug.Write(sql); };
                 var dd = db.EscortDivisions.Include(x => x.EscortFlotilla)
-                                           .Include(x => x.SelfDefenseShips)
+                                           .Include(x => x.SelfDefenseShips
+                                                .Select(y => y.HullCode))
                                            .ToList();
                 return dd;
             }
