@@ -42,24 +42,23 @@ namespace EntityFramework_Sample.DataStore {
         /// 護衛隊データをインサート（登録）
         /// </summary>
         public void InsertDivisionData() {
-            using (var db = new ShipsDbContext()) {
-                using (var sr = new StreamReader(@"..\..\Data\DivisionData.txt")) {
-                    var tmp = sr.ReadToEnd().Split(new string[] { "\r\n" }
-                                                  , StringSplitOptions.None);
+            using (var db = new ShipsDbContext())
+            using (var sr = new StreamReader(@"..\..\Data\DivisionData.txt")) {
+                var tmp = sr.ReadToEnd().Split(new string[] { "\r\n" }
+                                              , StringSplitOptions.None);
 
-                    for (int i = 0; i < tmp.Length; i++) {
-                        var edtmp = tmp[i].Split(new string[] { "\t" }, StringSplitOptions.None);
-                        //ラムダ式内で配列を使用出来ないため。
-                        var efname = edtmp[1];
-                        var ed = new EscortDivision {
-                            EscortDivisionName = edtmp[0],
-                            EscortFlotilla = db.EscortFlotillas.Single(x =>
-                                                x.EscortFlotillaName == efname)
-                        };
-                        db.EscortDivisions.Add(ed); //インサート
-                    }
-                    db.SaveChanges();   //DBコミット
+                for (int i = 0; i < tmp.Length; i++) {
+                    var edtmp = tmp[i].Split(new string[] { "\t" }, StringSplitOptions.None);
+                    //ラムダ式内で配列を使用出来ないため。
+                    var efname = edtmp[1];
+                    var ed = new EscortDivision {
+                        EscortDivisionName = edtmp[0],
+                        EscortFlotilla = db.EscortFlotillas.Single(x =>
+                                            x.EscortFlotillaName == efname)
+                    };
+                    db.EscortDivisions.Add(ed); //インサート
                 }
+                db.SaveChanges();   //DBコミット
             }
         }
         /// <summary>
@@ -67,19 +66,18 @@ namespace EntityFramework_Sample.DataStore {
         /// ex.DD,DE,DDG,DDH
         /// </summary>
         public void InsertHullCode() {
-            using (var db = new ShipsDbContext()) {
-                using (var sr = new StreamReader(@"..\..\Data\HullCodeData.txt")) {
-                    var tmp = sr.ReadToEnd().Split(new string[] { "\r\n" }
-                                                  , StringSplitOptions.None);
+            using (var db = new ShipsDbContext())
+            using (var sr = new StreamReader(@"..\..\Data\HullCodeData.txt")) {
+                var tmp = sr.ReadToEnd().Split(new string[] { "\r\n" }
+                                              , StringSplitOptions.None);
 
-                    for (int i = 0; i < tmp.Length; i++) {
-                        var hc = new HullCode {
-                            HullCodeSymbol = tmp[i]
-                        };
-                        db.HullCodes.Add(hc);   //データをインサート
-                    }
-                    db.SaveChanges();   //DBコミット
+                for (int i = 0; i < tmp.Length; i++) {
+                    var hc = new HullCode {
+                        HullCodeSymbol = tmp[i]
+                    };
+                    db.HullCodes.Add(hc);   //データをインサート
                 }
+                db.SaveChanges();   //DBコミット
             }
         }
         /// <summary>
@@ -87,58 +85,57 @@ namespace EntityFramework_Sample.DataStore {
         /// ex.こんごう型,いずも型,ひゅうが型
         /// </summary>
         public void InsertShipClass() {
-            using (var db = new ShipsDbContext()) {
-                using (var sr = new StreamReader(@"..\..\Data\ShipClassData.txt")) {
-                    var tmp = sr.ReadToEnd().Split(new string[] { "\r\n" }
-                                                  , StringSplitOptions.None);
+            using (var db = new ShipsDbContext())
+            using (var sr = new StreamReader(@"..\..\Data\ShipClassData.txt")) {
+                var tmp = sr.ReadToEnd().Split(new string[] { "\r\n" }
+                                              , StringSplitOptions.None);
 
-                    for (int i = 0; i < tmp.Length; i++) {
-                        var sc = new ShipClass {
-                            ShipClassName = tmp[i]
-                        };
-                        db.ShipClasses.Add(sc);   //データをインサート
-                    }
-                    db.SaveChanges();   //DBコミット
+                for (int i = 0; i < tmp.Length; i++) {
+                    var sc = new ShipClass {
+                        ShipClassName = tmp[i]
+                    };
+                    db.ShipClasses.Add(sc);   //データをインサート
                 }
+                db.SaveChanges();   //DBコミット
             }
         }
         /// <summary>
         /// 艦船情報のインサート（登録）
         /// </summary>
         public void InsertShipData() {
-            using (var db = new ShipsDbContext()) {
-                using (var sr = new StreamReader(@"..\..\Data\ShipData.txt")) {
-                    var tmp = sr.ReadToEnd().Split(new string[] { "\r\n" }
-                                                  , StringSplitOptions.None);
+            using (var db = new ShipsDbContext())
+            using (var sr = new StreamReader(@"..\..\Data\ShipData.txt")) {
+                var tmp = sr.ReadToEnd().Split(new string[] { "\r\n" }
+                                              , StringSplitOptions.None);
 
-                    for (int i = 0; i < tmp.Length; i++) {
-                        var sdstmp = tmp[i].Split(new string[] { "\t" }, StringSplitOptions.None);
-                        /*
-                         * LINQ to Entitiesでは配列をラムダ式に適用できないので変数に入れる
-                         */
-                        var dname = sdstmp[0];  //所属護衛隊名
-                        var hullcode = sdstmp[1];   //艦種コード
-                        var scname = sdstmp[4]; //艦型
-                        var dt = new DateTime(Int32.Parse(sdstmp[7]), 1, 1);    //就役年
+                for (int i = 0; i < tmp.Length; i++) {
+                    var sdstmp = tmp[i].Split(new string[] { "\t" }, StringSplitOptions.None);
+                    /*
+                     * LINQ to Entitiesでは配列をラムダ式に適用できないので変数に入れる
+                     */
+                    var dname = sdstmp[0];  //所属護衛隊名
+                    var hullcode = sdstmp[1];   //艦種コード
+                    var scname = sdstmp[4]; //艦型
+                    var dt = new DateTime(Int32.Parse(sdstmp[7]), 1, 1);    //就役年
 
-                        var sds = new SelfDefenseShip {
-                            EscortDivision = db.EscortDivisions.Single(x =>
-                                                                x.EscortDivisionName == dname),
-                            HullCode = db.HullCodes.Single(x => x.HullCodeSymbol == hullcode),
-                            ShipNumber = Int32.Parse(sdstmp[2]),
-                            ShipName = sdstmp[3],
-                            ShipClass = db.ShipClasses.Single(x => x.ShipClassName == scname),
-                            StandardDisplacement = Int32.Parse(sdstmp[5]),
-                            FullLoadDisplacement = Int32.Parse(sdstmp[6]),
-                            CommissionYear = dt,
-                            FullLength = Double.Parse(sdstmp[8]),
-                            FullWidth = Double.Parse(sdstmp[9])
-                        };
-                        db.SelfDefenseShips.Add(sds);   //データをインサート
-                    }
-                    db.SaveChanges();   //DBコミット
+                    var sds = new SelfDefenseShip {
+                        EscortDivision = db.EscortDivisions.Single(x =>
+                                                            x.EscortDivisionName == dname),
+                        HullCode = db.HullCodes.Single(x => x.HullCodeSymbol == hullcode),
+                        ShipNumber = Int32.Parse(sdstmp[2]),
+                        ShipName = sdstmp[3],
+                        ShipClass = db.ShipClasses.Single(x => x.ShipClassName == scname),
+                        StandardDisplacement = Int32.Parse(sdstmp[5]),
+                        FullLoadDisplacement = Int32.Parse(sdstmp[6]),
+                        CommissionYear = dt,
+                        FullLength = Double.Parse(sdstmp[8]),
+                        FullWidth = Double.Parse(sdstmp[9])
+                    };
+                    db.SelfDefenseShips.Add(sds);   //データをインサート
                 }
+                db.SaveChanges();   //DBコミット
             }
+
         }
     }
 }
