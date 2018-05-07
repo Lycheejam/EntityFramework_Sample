@@ -8,16 +8,16 @@ namespace EntityFramework_Sample {
 
             //Create
             //初回のみ実行すること
-            //var insData = new InsertDataStore();
+            var insData = new InsertDataStore();
             //insData.InsertHullCode();   //艦種コードの追加
             //insData.InsertShipClass();  //艦型コードの追加
             //insData.InsertFlotillaData(); //護衛隊群の追加
             //insData.InsertDivisionData();   //護衛隊コードの追加
             //insData.InsertShipData();   //艦船データ
-            //insData.InsertTestShipData();   //テスト用データの追加
+            insData.InsertTestShipData();   //テスト用データの追加
 
             //Read
-            //var readData = new ReadDataStore();
+            var readData = new ReadDataStore();
             //護衛隊群全データ読み込み
             //var fd = readData.ReadFlotillaAll();
             //foreach (var f in fd) {
@@ -46,10 +46,12 @@ namespace EntityFramework_Sample {
 
             //Update
             //var updateData = new UpdateDataStore();
-            //updateData.UpdateShipDivision("第1護衛隊", "てすと");
-            //updateData.UpdateShipName("てすと", "変更てすと");
+            //updateData.UpdateShipDivision("第1護衛隊", "てすと１");
+            //updateData.UpdateShipName("てすと１", "変更てすと");
 
             //Delete
+            //var deleteData = new DeleteDataStore();
+            //deleteData.DeleteShipData("てすと２");
         }
     }
 }

@@ -54,6 +54,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataStore\DeleteDataStore.cs" />
     <Compile Include="DataStore\InsertDataStore.cs" />
     <Compile Include="DataStore\ReadDataStore.cs" />
     <Compile Include="DataStore\UpdateDataStore.cs" />

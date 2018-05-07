@@ -142,32 +142,46 @@ namespace EntityFramework_Sample.DataStore {
         /// </summary>
         public void InsertTestShipData() {
             using (var db = new ShipsDbContext()) {
+                var ef = new EscortFlotilla { //テスト用護衛隊群の追加
+                    EscortFlotillaName = "テスト護衛隊群"
+                };
+                var ed = new EscortDivision {   //テスト用護衛隊の追加
+                    EscortDivisionName = "テスト護衛隊"
+                    , EscortFlotilla = ef
+                };
+                var hc = new HullCode { //艦種コード
+                    HullCodeSymbol = "TEST"
+                };
+                var sc = new ShipClass {   //艦種型
+                    ShipClassName = "テスト型"
+                };
                 //1隻目
                 var sds = new SelfDefenseShip {
-                    EscortDivision = new EscortDivision {   //テスト用護衛隊の追加
-                        EscortDivisionName = "テスト護衛隊"
-                        , EscortFlotilla = new EscortFlotilla { //テスト用護衛隊群の追加
-                            EscortFlotillaName = "テスト護衛隊群"
-                        }
-                    }
-                    , HullCode = new HullCode { //艦種コード
-                        HullCodeSymbol = "TEST"
-                    }
-                    , ShipNumber = 9999     //艦船番号
-                    , ShipName = "てすと１"      //艦名
-                    , ShipClass = new ShipClass {   //艦種型
-                        ShipClassName = "テスト型"
-                    }
-                    , StandardDisplacement = 9999   //基準排水量
-                    , FullLoadDisplacement = 9999   //満載排水量
-                    , FullLength = 999  //全長
-                    , FullWidth = 999   //全幅
-                    , CommissionYear = new DateTime(2018,5,7)   //就役
+                    EscortDivision = ed,
+                    HullCode = hc,
+                    ShipNumber = 9998,   //艦船番号
+                    ShipName = "てすと１",   //艦名
+                    ShipClass = sc,
+                    StandardDisplacement = 9999,  //基準排水量
+                    FullLoadDisplacement = 9999,  //満載排水量
+                    FullLength = 999,  //全長
+                    FullWidth = 999,  //全幅
+                    CommissionYear = new DateTime(2018, 5, 7)   //就役
                 };
                 db.SelfDefenseShips.Add(sds);
                 //2隻目
-                sds.ShipNumber = 9998;
-                sds.ShipName = "てすと２";
+                sds = new SelfDefenseShip {
+                    EscortDivision = ed,
+                    HullCode = hc,
+                    ShipNumber = 9999,    //艦船番号
+                    ShipName = "てすと２",    //艦名
+                    ShipClass = sc,
+                    StandardDisplacement = 9999,   //基準排水量
+                    FullLoadDisplacement = 9999,  //満載排水量
+                    FullLength = 999,//全長
+                    FullWidth = 999,  //全幅
+                    CommissionYear = new DateTime(2018, 5, 7)   //就役
+                };
                 db.SelfDefenseShips.Add(sds);
                 //コミット
                 db.SaveChanges();
