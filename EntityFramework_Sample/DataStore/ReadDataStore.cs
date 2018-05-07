@@ -6,14 +6,14 @@ using System.Diagnostics;
 
 namespace EntityFramework_Sample.DataStore {
     class ReadDataStore {
-        public ICollection<EscortFlotilla> ReadFlotillaAllData() {
+        public ICollection<EscortFlotilla> ReadFlotillaAll() {
             using (var db = new ShipsDbContext()) {
                 var fd = db.EscortFlotillas.Include("EscortDivision")
                                            .ToList();
                 return fd;
             }
         }
-        public EscortFlotilla ReadFlotillaData(int fId) {
+        public EscortFlotilla ReadFlotilla(int fId) {
             using (var db = new ShipsDbContext()) {
                 var fd = db.EscortFlotillas.Where(x => x.EscortFlotillaId == fId)
                                            .Include("EscortDivision")
@@ -21,7 +21,7 @@ namespace EntityFramework_Sample.DataStore {
                 return fd;
             }
         }
-        public ICollection<EscortDivision> ReadDivisionAllData() {
+        public ICollection<EscortDivision> ReadDivisionAll() {
             using (var db = new ShipsDbContext()) {
                 db.Database.Log = sql => { Debug.Write(sql); };
                 var dd = db.EscortDivisions.Include(x => x.EscortFlotilla)
@@ -32,7 +32,7 @@ namespace EntityFramework_Sample.DataStore {
             }
 
         }
-        public EscortDivision ReadDivisionData(int dId) {
+        public EscortDivision ReadDivision(int dId) {
             using (var db = new ShipsDbContext()) {
                 var dd = db.EscortDivisions.Where(x => x.EscortDivisionId == dId)
                                            .Include("EscortFlotilla")

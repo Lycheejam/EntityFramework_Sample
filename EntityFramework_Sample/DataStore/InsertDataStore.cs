@@ -135,7 +135,43 @@ namespace EntityFramework_Sample.DataStore {
                 }
                 db.SaveChanges();   //DBコミット
             }
-
+        }
+        /// <summary>
+        /// テストデータの追加
+        /// 護衛隊群,護衛隊,艦種コード,艦種型,艦船データをテスト用に新規に追加します。
+        /// </summary>
+        public void InsertTestShipData() {
+            using (var db = new ShipsDbContext()) {
+                //1隻目
+                var sds = new SelfDefenseShip {
+                    EscortDivision = new EscortDivision {   //テスト用護衛隊の追加
+                        EscortDivisionName = "テスト護衛隊"
+                        , EscortFlotilla = new EscortFlotilla { //テスト用護衛隊群の追加
+                            EscortFlotillaName = "テスト護衛隊群"
+                        }
+                    }
+                    , HullCode = new HullCode { //艦種コード
+                        HullCodeSymbol = "TEST"
+                    }
+                    , ShipNumber = 9999     //艦船番号
+                    , ShipName = "てすと１"      //艦名
+                    , ShipClass = new ShipClass {   //艦種型
+                        ShipClassName = "テスト型"
+                    }
+                    , StandardDisplacement = 9999   //基準排水量
+                    , FullLoadDisplacement = 9999   //満載排水量
+                    , FullLength = 999  //全長
+                    , FullWidth = 999   //全幅
+                    , CommissionYear = new DateTime(2018,5,7)   //就役
+                };
+                db.SelfDefenseShips.Add(sds);
+                //2隻目
+                sds.ShipNumber = 9998;
+                sds.ShipName = "てすと２";
+                db.SelfDefenseShips.Add(sds);
+                //コミット
+                db.SaveChanges();
+            }
         }
     }
 }

@@ -14,11 +14,12 @@ namespace EntityFramework_Sample {
             //insData.InsertFlotillaData(); //護衛隊群の追加
             //insData.InsertDivisionData();   //護衛隊コードの追加
             //insData.InsertShipData();   //艦船データ
+            //insData.InsertTestShipData();   //テスト用データの追加
 
             //Read
-            var readData = new ReadDataStore();
+            //var readData = new ReadDataStore();
             //護衛隊群全データ読み込み
-            //var fd = readData.ReadFlotillaAllData();
+            //var fd = readData.ReadFlotillaAll();
             //foreach (var f in fd) {
             //    Console.WriteLine(f.EscortFlotillaName);
             //    foreach (var divi in f.EscortDivision) {
@@ -26,25 +27,27 @@ namespace EntityFramework_Sample {
             //    }
             //}
             //護衛隊群を指定して読み込み
-            //var fd = readData.ReadFlotillaData(1);
+            //var fd = readData.ReadFlotilla(1);
             //Console.WriteLine(fd.EscortFlotillaName);
             //foreach (var divi in fd.EscortDivision) {
             //    Console.WriteLine(" - " + divi.EscortDivisionName);
             //}
 
             //護衛隊の全データと所属する護衛隊群
-            var dd = readData.ReadDivisionAllData();
+            //var dd = readData.ReadDivisionAll();
 
-            foreach (var d in dd) {
-                Console.WriteLine("護衛隊：{0} - 所属護衛隊群：{1}", d.EscortDivisionName, d.EscortFlotilla.EscortFlotillaName);
-                foreach (var sds in d.SelfDefenseShips) {
-                    Console.WriteLine(" - {0}-{1}：{2}", sds.HullCode.HullCodeSymbol, sds.ShipNumber, sds.ShipName);
-                }
-            }
+            //foreach (var d in dd) {
+            //    Console.WriteLine("護衛隊：{0} - 所属護衛隊群：{1}", d.EscortDivisionName, d.EscortFlotilla.EscortFlotillaName);
+            //    foreach (var sds in d.SelfDefenseShips) {
+            //        Console.WriteLine(" - {0}-{1}：{2}", sds.HullCode.HullCodeSymbol, sds.ShipNumber, sds.ShipName);
+            //    }
+            //}
 
 
             //Update
-
+            //var updateData = new UpdateDataStore();
+            //updateData.UpdateShipDivision("第1護衛隊", "てすと");
+            //updateData.UpdateShipName("てすと", "変更てすと");
 
             //Delete
         }
