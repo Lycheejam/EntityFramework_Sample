@@ -10,31 +10,41 @@ namespace EntityFramework_Sample.DataStore {
         /// </summary>
         public void InsertFlotillaData() {
             using (var db = new ShipsDbContext()) {
-                var f1 = new EscortFlotilla {
-                    EscortFlotillaName = "第1護衛隊群"
-                };
-                db.EscortFlotillas.Add(f1);
+                //Addを使った方法
+                //var ef1 = new EscortFlotilla {
+                //    EscortFlotillaName = "第1護衛隊群"
+                //};
+                //db.EscortFlotillas.Add(f1);
 
-                var f2 = new EscortFlotilla {
-                    EscortFlotillaName = "第2護衛隊群"
-                };
-                db.EscortFlotillas.Add(f2);
+                //var ef2 = new EscortFlotilla {
+                //    EscortFlotillaName = "第2護衛隊群"
+                //};
+                //db.EscortFlotillas.Add(f2);
 
-                var f3 = new EscortFlotilla {
-                    EscortFlotillaName = "第3護衛隊群"
-                };
-                db.EscortFlotillas.Add(f3);
+                //var ef3 = new EscortFlotilla {
+                //    EscortFlotillaName = "第3護衛隊群"
+                //};
+                //db.EscortFlotillas.Add(f3);
 
-                var f4 = new EscortFlotilla {
-                    EscortFlotillaName = "第4護衛隊群"
-                };
-                db.EscortFlotillas.Add(f4);
+                //var ef4 = new EscortFlotilla {
+                //    EscortFlotillaName = "第4護衛隊群"
+                //};
+                //db.EscortFlotillas.Add(f4);
 
-                var f5 = new EscortFlotilla {
-                    EscortFlotillaName = "地域配備部隊"
-                };
-                db.EscortFlotillas.Add(f5);
+                //var ef5 = new EscortFlotilla {
+                //    EscortFlotillaName = "地域配備部隊"
+                //};
+                //db.EscortFlotillas.Add(f5);
 
+                //AddRangeを使った方法
+                var ef = new EscortFlotilla[] {
+                    new EscortFlotilla { EscortFlotillaName = "第1護衛隊群" },
+                    new EscortFlotilla { EscortFlotillaName = "第2護衛隊群" },
+                    new EscortFlotilla { EscortFlotillaName = "第3護衛隊群" },
+                    new EscortFlotilla { EscortFlotillaName = "第4護衛隊群" },
+                    new EscortFlotilla { EscortFlotillaName = "地域配備部隊" }
+                };
+                db.EscortFlotillas.AddRange(ef);
                 db.SaveChanges();
             }
         }

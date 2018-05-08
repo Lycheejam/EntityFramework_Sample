@@ -45,12 +45,12 @@ namespace EntityFramework_Sample {
 
 
             //Update
-            //var updateData = new UpdateDataStore();
+            var updateData = new UpdateDataStore();
             //updateData.UpdateShipDivision("第1護衛隊", "てすと１");
             //updateData.UpdateShipName("てすと１", "変更てすと");
 
             //Delete
-            //var deleteData = new DeleteDataStore();
+            var deleteData = new DeleteDataStore();
             //deleteData.DeleteShipData("てすと２");
         }
     }
