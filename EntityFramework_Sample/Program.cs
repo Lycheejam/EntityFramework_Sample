@@ -14,7 +14,7 @@ namespace EntityFramework_Sample {
             //insData.InsertFlotillaData(); //護衛隊群の追加
             //insData.InsertDivisionData();   //護衛隊コードの追加
             //insData.InsertShipData();   //艦船データ
-            insData.InsertTestShipData();   //テスト用データの追加
+            //insData.InsertTestShipData();   //テスト用データの追加
 
             //Read
             var readData = new ReadDataStore();
@@ -52,6 +52,8 @@ namespace EntityFramework_Sample {
             //Delete
             var deleteData = new DeleteDataStore();
             //deleteData.DeleteShipData("てすと２");
+            //deleteData.DeleteShipNumberRange(9998);
+            deleteData.DeleteDivisionRelation("テスト護衛隊");
         }
     }
 }
