@@ -19,5 +19,18 @@ namespace EntityFramework_Sample.DataStore {
                 }
             }
         }
+        /// <summary>
+        /// 指定した艦船番号以上のデータを削除する
+        /// </summary>
+        /// <param name="targetnumber">削除の起点となる艦船番号</param>
+        public void DeleteShipNumberRange(int targetnumber) {
+            using (var db = new ShipsDbContext()) {
+                var sds = db.SelfDefenseShips.Where(x => x.ShipNumber >= targetnumber);
+                if (sds != null) {
+                    db.SelfDefenseShips.RemoveRange(sds);
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
