@@ -42,6 +42,12 @@ namespace EntityFramework_Sample {
             //        Console.WriteLine(" - {0}-{1}：{2}", sds.HullCode.HullCodeSymbol, sds.ShipNumber, sds.ShipName);
             //    }
             //}
+            //var ed = readData.LazyLoadingTest();
+            //foreach (var divisions in ed) {
+            //    Console.WriteLine("所属護衛隊群：{0} - 所属護衛隊：{1}",
+            //        divisions.EscortFlotilla, divisions.EscortDivisionName);
+            //}
+            readData.LazyLoadingTest2();
 
 
             //Update
@@ -53,7 +59,7 @@ namespace EntityFramework_Sample {
             var deleteData = new DeleteDataStore();
             //deleteData.DeleteShipData("てすと２");
             //deleteData.DeleteShipNumberRange(9998);
-            deleteData.DeleteDivisionRelation("テスト護衛隊");
+            //deleteData.DeleteDivisionRelation("テスト護衛隊");
         }
     }
 }

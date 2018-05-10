@@ -3,6 +3,7 @@ using System.Linq;
 using System.Data.Entity;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System;
 
 namespace EntityFramework_Sample.DataStore {
     class ReadDataStore {
@@ -38,6 +39,22 @@ namespace EntityFramework_Sample.DataStore {
                                            .Include("EscortFlotilla")
                                            .SingleOrDefault();
                 return dd;
+            }
+        }
+
+        public ICollection<EscortDivision> LazyLoadingTest() {
+            using (var db = new ShipsDbContext()) {
+                var ed = db.EscortDivisions.ToList();
+                return ed;
+            }
+        }
+        public void LazyLoadingTest2() {
+            using (var db = new ShipsDbContext()) {
+                var ed = db.EscortDivisions.Where(x => x.EscortDivisionId == 1);
+                foreach (var divisions in ed) {
+                    Console.WriteLine("所属護衛隊群：{0} - 所属護衛隊：{1}",
+                        divisions.EscortFlotilla.EscortFlotillaName, divisions.EscortDivisionName);
+                }
             }
         }
     }
