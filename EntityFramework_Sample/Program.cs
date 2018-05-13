@@ -42,13 +42,15 @@ namespace EntityFramework_Sample {
             //        Console.WriteLine(" - {0}-{1}：{2}", sds.HullCode.HullCodeSymbol, sds.ShipNumber, sds.ShipName);
             //    }
             //}
-            //var ed = readData.LazyLoadingTest();
-            //foreach (var divisions in ed) {
-            //    Console.WriteLine("所属護衛隊群：{0} - 所属護衛隊：{1}",
-            //        divisions.EscortFlotilla, divisions.EscortDivisionName);
-            //}
-            readData.LazyLoadingTest2();
-
+            var ed = readData.LazyLoadingTest();
+            foreach (var divisions in ed) {
+                Console.WriteLine("所属護衛隊群：{0} - 所属護衛隊：{1}",
+                    divisions.EscortFlotilla.EscortFlotillaName, divisions.EscortDivisionName);
+                foreach (var ships in divisions.SelfDefenseShips) {
+                    Console.WriteLine("{0}-{1}:{2}",ships.HullCode.HullCodeSymbol,ships.ShipNumber,
+                        ships.ShipName);
+                }
+            }
 
             //Update
             var updateData = new UpdateDataStore();

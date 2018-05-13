@@ -44,17 +44,14 @@ namespace EntityFramework_Sample.DataStore {
 
         public ICollection<EscortDivision> LazyLoadingTest() {
             using (var db = new ShipsDbContext()) {
+                db.Database.Log = sql => { Debug.Write(sql); };
+                db.EscortFlotillas.Load();
+                db.SelfDefenseShips.Load();
+                db.HullCodes.Load();
+                db.ShipClasses.Load();
+
                 var ed = db.EscortDivisions.ToList();
                 return ed;
-            }
-        }
-        public void LazyLoadingTest2() {
-            using (var db = new ShipsDbContext()) {
-                var ed = db.EscortDivisions.Where(x => x.EscortDivisionId == 1);
-                foreach (var divisions in ed) {
-                    Console.WriteLine("所属護衛隊群：{0} - 所属護衛隊：{1}",
-                        divisions.EscortFlotilla.EscortFlotillaName, divisions.EscortDivisionName);
-                }
             }
         }
     }
