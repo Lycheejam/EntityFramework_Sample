@@ -7,8 +7,12 @@ using System.Threading.Tasks;
 namespace LayzyLoading_Sample {
     class Program {
         static void Main(string[] args) {
+            Console.WriteLine("----Array----");
             ArrayTest();
+            Console.WriteLine("----List----");
+            ListTest();
         }
+        //配列を使ったLINQ to Objectの遅延/即時実行サンプル
         public static void ArrayTest() {
             string[] ships = { "ひゅうが", "いせ", "いずも", "かが" };
 
@@ -30,6 +34,31 @@ namespace LayzyLoading_Sample {
                 Console.WriteLine(eq);
             }
         }
+        
+        public static void ListTest() {
+            var ships = new List<string> {
+                "ひゅうが", "いせ", "いずも", "かが"
+            };
+
+            //遅延実行
+            var layzyquery = ships.Where(x => x.Length <= 2);
+            //即時実行
+            var eagerlyquery = ships.Where(x => x.Length <= 2).ToList();
+
+            //配列内容を変更する
+            for (int i = 0; i < ships.Count; i++) {
+                ships[i] = "テ" + i;
+            }
+
+            foreach (var lq in layzyquery) {    //遅延実行結果出力
+                Console.WriteLine(lq);
+            }
+            Console.WriteLine("-------------------");
+            foreach (var eq in eagerlyquery) {  //即時実行結果出力
+                Console.WriteLine(eq);
+            }
+        }
+
         public void ObjectTest() {
             var ship = new SelfDefenseShip[] {
                 new SelfDefenseShip{ id = "DDH-181", name = "ひゅうが" },
