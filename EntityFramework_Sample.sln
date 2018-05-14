@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework_Sample", "E
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VirtualTest", "VirtualTest\VirtualTest.csproj", "{1EA5DC01-829C-431B-BCBC-9D1710C41EC2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LayzyLoading_Sample", "LayzyLoading_Sample\LayzyLoading_Sample.csproj", "{7CC4E4FF-A680-4607-9316-F679F3C103AD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{1EA5DC01-829C-431B-BCBC-9D1710C41EC2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1EA5DC01-829C-431B-BCBC-9D1710C41EC2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1EA5DC01-829C-431B-BCBC-9D1710C41EC2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7CC4E4FF-A680-4607-9316-F679F3C103AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7CC4E4FF-A680-4607-9316-F679F3C103AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7CC4E4FF-A680-4607-9316-F679F3C103AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7CC4E4FF-A680-4607-9316-F679F3C103AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
