@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFramework_Sample.Models {
-    class SelfDefenseShip { //護衛艦
+    public class SelfDefenseShip { //護衛艦
         [Column(Order = 0)]
         [Required]
         public virtual EscortDivision EscortDivision { get; set; }  //所属

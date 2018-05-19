@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFramework_Sample.Models {
-    class HullCode {    //艦種別
+    public class HullCode {    //艦種別
         [Key]
         [Column(Order = 0)]
         [Required]

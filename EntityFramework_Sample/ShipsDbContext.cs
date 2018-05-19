@@ -2,7 +2,7 @@
 using System.Data.Entity;
 
 namespace EntityFramework_Sample {
-    class ShipsDbContext : DbContext {
+    public class ShipsDbContext : DbContext {
         public ShipsDbContext()
             : base("name=ShipsDbContext") {
             Database.SetInitializer(

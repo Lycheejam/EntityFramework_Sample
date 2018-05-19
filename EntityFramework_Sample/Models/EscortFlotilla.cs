@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace EntityFramework_Sample.Models {
-    class EscortFlotilla {  //護衛隊群
+    public class EscortFlotilla {  //護衛隊群
         [Key]
         [Column(Order = 0)]
         [Required]
